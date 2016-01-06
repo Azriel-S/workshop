@@ -3,7 +3,7 @@ var keypress = require("keypress");
 var dt = require("./decision-tree");
 
 const SENSOR_PIN = 4;
-const SPEED = 35;
+const SPEED = 50;
 const TURN_SPEED = 10;
 
 var board = new five.Board();
@@ -22,11 +22,11 @@ var learner;
 function drive() {
   // Combine throttle and direction into motor commands
   if ( throttle > 0) {
-    motor1.forward(throttle - dir);
-    motor2.forward(throttle + dir);    
+    motor1.forward(throttle + dir);
+    motor2.forward(throttle - dir);    
   } else if (throttle < 0) {
-    motor1.reverse((throttle - dir) * -1);
-    motor2.reverse((throttle + dir) * -1);
+    motor1.reverse((throttle + dir) * -1);
+    motor2.reverse((throttle - dir) * -1);
   } else {
     stop();
   }

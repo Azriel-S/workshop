@@ -2,7 +2,7 @@ var five = require("johnny-five");
 var keypress = require("keypress");
 var Barcli = require("barcli");
 
-const SPEED = 35;
+const SPEED = 100;
 const TURN_SPEED = 10;
 
 var board = new five.Board();
@@ -14,6 +14,8 @@ var dir = 0;
 var calibrating = true;
 
 function drive() {
+  console.log("throttle = ", throttle);
+  console.log("dir = ", dir);
   // Combine throttle and direction into motor commands
   if ( throttle > 0) {
     motor1.forward(throttle - dir);
