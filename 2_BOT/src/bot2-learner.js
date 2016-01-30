@@ -4,7 +4,7 @@ var dt = require("./decision-tree");
 
 const SENSOR_PIN = 4;
 const SPEED = 50;
-const TURN_SPEED = 10;
+const TURN_SPEED = 20;
 
 var board = new five.Board();
 var motor1, motor2, eyes;
@@ -94,7 +94,7 @@ board.on("ready", function() {
     // IF autopilot, use learner to determine direction
     if (autopilot && learner) {
       throttle = SPEED;
-      dir = learner.predict(input);
+      dir = learner.predict(input) * 0.9;
       drive();
     }
 
